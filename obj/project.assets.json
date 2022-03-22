@@ -1199,11 +1199,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Heber\\Source\\Repos\\Mission10_BookSite2.0\\BookSite2.0.csproj",
+      "projectUniqueName": "C:\\Users\\Heber\\Source\\Repos\\Mission10_BookSite2\\BookSite2.0.csproj",
       "projectName": "BookSite2.0",
-      "projectPath": "C:\\Users\\Heber\\Source\\Repos\\Mission10_BookSite2.0\\BookSite2.0.csproj",
+      "projectPath": "C:\\Users\\Heber\\Source\\Repos\\Mission10_BookSite2\\BookSite2.0.csproj",
       "packagesPath": "C:\\Users\\Heber\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Heber\\Source\\Repos\\Mission10_BookSite2.0\\obj\\",
+      "outputPath": "C:\\Users\\Heber\\Source\\Repos\\Mission10_BookSite2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Heber\\AppData\\Roaming\\NuGet\\NuGet.Config",
