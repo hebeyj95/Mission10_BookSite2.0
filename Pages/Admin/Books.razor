@@ -1,8 +1,74 @@
 ﻿@page "/admin/books"
 @page "/admin"
+@inherits OwningComponentBase<IBookSiteRepository>
+
+<div class="alert alert-danger" role="alert">
+    There is no way to recover a book once it has been deleted. Click carefully!
+</div>
+<table class="table table-sm table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Book Id</th>
+            <th>Title</th>
+            <th>Author</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (BookData?.Count() > 0)
+        {
+            //List the Projects
+            @foreach (Book b in BookData)
+            {
+                <tr>
+                    <td>@b.BookId</td>
+                    <td>@b.Title</td>
+                    <td>@b.Author</td>
+                    <td>
+                        <NavLink class="btn btn-info btn-sm" href="@GetDetailsUrl(b.BookId)">Details</NavLink>
+                    </td>
+                    <td>
+                        <NavLink class="btn btn-warning btn-sm" href="@GetEditUrl(b.BookId)">Edit</NavLink>
+                    </td>
+                    <td>
+                        <NavLink class="btn btn-danger btn-sm" @onclick="@(x => RemoveBook(b))">Delete</NavLink>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">No Books</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<NavLink class="btn btn-primary" href="/admin/books/create">Create</NavLink>
+
 
 @code {
 
-}
+    public IBookSiteRepository repo => Service;
 
-<h1> Books </h1>
+    public IEnumerable<Book> BookData { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        await UpdateData();
+    }
+
+    public async Task UpdateData()
+    {
+        BookData = await repo.Books.ToListAsync();
+    }
+    public string GetDetailsUrl(long id) => $"/admin/books/details/{id}";
+    public string GetEditUrl(long id) => $"/admin/books/edit/{id}";
+
+    public async Task RemoveBook(Book b)
+    {
+        repo.DeleteBook(b);
+        await UpdateData();
+    }
+
+}

@@ -53,13 +53,34 @@ using BookSite2._0.Models;
 #line default
 #line hidden
 #nullable disable
-    public partial class AdminLayout : LayoutComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/admin/books/details/{id:long}")]
+    public partial class Details : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 22 "C:\Users\Heber\Source\Repos\Mission10_BookSite2\Pages\Admin\Details.razor"
+       
+    [Inject]
+    public IBookSiteRepository repo { get; set; }
+
+    [Parameter]
+    public long Id { get; set; }
+
+    public Book b { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        b = repo.Books.FirstOrDefault(x => x.BookId == Id);
+    }
+    public string EditUrl => $"/admin/books/edit/{b.BookId}";
+
+#line default
+#line hidden
+#nullable disable
     }
 }
 #pragma warning restore 1591

@@ -53,7 +53,7 @@ using BookSite2._0.Models;
 #line default
 #line hidden
 #nullable disable
-    public partial class AdminLayout : LayoutComponentBase
+    public partial class Editor : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
